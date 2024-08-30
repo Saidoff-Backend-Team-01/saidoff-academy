@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends
 from watchfiles import awatch
+import uvicorn
 
 from app.schemas.banner import BannerListSchema, BannerCreateSchema
 from app.crud.banner import get_banners, create_banner
@@ -19,3 +20,7 @@ async def banners(db: Session = Depends(get_db)):
 async def banner_create(banner: BannerCreateSchema, db: Session = Depends(get_db)):
     new_banner = create_banner(banner_create=banner, db=db)
     return new_banner
+
+
+if __name__ == '__main__':
+    uvicorn.run
