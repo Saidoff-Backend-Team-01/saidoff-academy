@@ -9,5 +9,3 @@ class Banner(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     title = Column(String, nullable=False)
     desc = Column(String, nullable=False)
-
-    
