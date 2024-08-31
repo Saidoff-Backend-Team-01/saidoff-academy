@@ -12,9 +12,8 @@ class BackendBaseSettings(BaseSettings):
     TITLE: str = "Saidoff Academy Documentation of Backend Part"
     VERSION: str = "0.1.0"
     TIMEZONE: str = "UTC"
-    DESCRIPTION: str | None = None
+    DESCRIPTION: str = "default"
     DEBUG: bool = False
-
 
     ADMIN_USERNAME: str = decouple.config("ADMIN_USERNAME")
     ADMIN_PASSWORD: str = decouple.config("ADMIN_PASSWORD")
@@ -84,7 +83,7 @@ class BackendBaseSettings(BaseSettings):
         validate_assignment: bool = True
 
     @property
-    def set_backend_app_attributes(self) -> dict[str, str | bool | None]:
+    def set_backend_app_attributes(self) -> dict[str, None]:
         """
         Set all `FastAPI` class' attributes with the custom values defined in `BackendBaseSettings`.
         """
@@ -99,5 +98,6 @@ class BackendBaseSettings(BaseSettings):
             "openapi_prefix": self.OPENAPI_PREFIX,
             "api_prefix": self.API_PREFIX,
         }
+
 
 base_settings = BackendBaseSettings()

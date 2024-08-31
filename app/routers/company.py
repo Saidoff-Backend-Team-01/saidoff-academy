@@ -10,6 +10,7 @@ router = APIRouter(
     prefix="/company"
 )
 
+
 @router.get("/banners")
 async def banners(db: Session = Depends(get_db)):
     return get_banners(db)
