@@ -6,7 +6,9 @@ from app.config.settings import base_settings
 # print("Db passord:", base_settings.DB_PASSWORD)
 # print("Db Name:", base_settings.DB_NAME)
 
-SQLALCHEMY_DATABASE_URL = f"postgresql://postgres:husainov571brr@localhost:5432/academy"
+
+SQLALCHEMY_DATABASE_URL = "postgresql://postgres:uluby123@localhost/academy"
+
 
 
 engine = create_engine(
