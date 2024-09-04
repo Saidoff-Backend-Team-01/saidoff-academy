@@ -3,6 +3,7 @@ from sqlalchemy.orm import relationship
 
 from app.config.database import Base
 
+
 class Banner(Base):
     __tablename__ = 'banner'
 
