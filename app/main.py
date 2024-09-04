@@ -17,6 +17,7 @@ app = FastAPI(
 admin = Admin(app, engine, authentication_backend=authentication_backend)
 
 admin.add_view(model_admins.BannerAdmin)
+admin.add_view(model_admins.Why_we_usAdmin)
 
 
 app.include_router(company_router)

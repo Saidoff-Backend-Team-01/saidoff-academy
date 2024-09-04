@@ -2,7 +2,7 @@ from sqlalchemy import desc
 from sqlalchemy.orm import Session
 
 from app.schemas.banner import BannerListSchema, BannerCreateSchema
-from app.models.company import Banner, Why_we_us
+from app.models.banner import Banner, Why_we_us
 
 
 def get_banners(db: Session):

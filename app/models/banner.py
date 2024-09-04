@@ -11,7 +11,7 @@ class Banner(Base):
     title = Column(String, nullable=False)
     desc = Column(String, nullable=False)
     bg_image = Column(String, nullable=False)
-    phone_num = Column(String(lenth=20), nullable=False)
+    phone_num = Column(String(length=20), nullable=False)
 
 
 class Why_we_us(Base):
