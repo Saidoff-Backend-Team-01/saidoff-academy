@@ -15,10 +15,12 @@ router = APIRouter(
 async def banners(db: Session = Depends(get_db)):
     return get_banners(db)
 
+
 @router.post("banner/")
 async def banner_create(banner: BannerCreateSchema, db: Session = Depends(get_db)):
     new_banner = create_banner(banner_create=banner, db=db)
     return new_banner
+
 
 @router.get("/why_we_us/")
 async def why_we_us(db: Session = Depends(get_db)):
