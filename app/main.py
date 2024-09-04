@@ -4,7 +4,7 @@ from app.config.database import engine
 
 from app.routers.company import router as company_router
 from sqladmin import Admin
-from app.admin import model_admins
+from app.admin import common_admins, custumer_admins
 from app.admin.auth import authentication_backend
 from fastapi.staticfiles import StaticFiles
 
@@ -16,7 +16,10 @@ app = FastAPI(
 
 admin = Admin(app, engine, authentication_backend=authentication_backend)
 
-admin.add_view(model_admins.BannerAdmin)
+admin.add_view(common_admins.BannerAdmin)
+admin.add_view(common_admins.SocialMediaAdmin)
+admin.add_view(custumer_admins.ContactUSAdmin)
+admin.add_view(custumer_admins.FeedbackAdmin)
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 

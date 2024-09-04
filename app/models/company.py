@@ -1,5 +1,7 @@
 from sqlalchemy import Column, String, Integer, Text, CheckConstraint
 from sqlalchemy.orm import validates
+from fastapi_storages import FileSystemStorage
+from fastapi_storages.integrations.sqlalchemy import ImageType
 
 from app.config.database import Base
 
@@ -16,7 +18,7 @@ class Sponsor(Base):
     __tablename__ = 'sponsor' 
 
     id = Column(Integer, primary_key=True, index=True)
-    image = Column(Text)
+    image = Column(ImageType(FileSystemStorage(path='static/sponsor')))
     url = Column(Text)
 
 
@@ -25,7 +27,7 @@ class Sponsor(Base):
         if not 'http' in value and not 'https' in value:
             raise ValueError('Incorrect url')
         
-        return 
+        return value
     
 
 class OurTeamMember(Base):
@@ -35,7 +37,7 @@ class OurTeamMember(Base):
     job = Column(String(length=100))
     full_name = Column(String(length=200))
     experience = Column(Integer)
-    image = Column(Text)
+    image = Column(ImageType(FileSystemStorage(path='static/our_team_member')))
 
 
     @validates('experience')

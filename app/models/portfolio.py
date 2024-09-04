@@ -1,5 +1,7 @@
 from sqlalchemy import Column, String, Text, Integer, ForeignKey
 from sqlalchemy.orm import relationship
+from fastapi_storages import FileSystemStorage
+from fastapi_storages.integrations.sqlalchemy import ImageType
 
 from app.config.database import Base
 
@@ -20,7 +22,7 @@ class OurResult(Base):
     __tablename__ = 'our_result'
 
     id = Column(Integer, primary_key=True, index=True)
-    image = Column(Text)
+    image = Column(ImageType(FileSystemStorage(path='static/our_result')))
     category = Column(Integer, ForeignKey('result_category.id'), nullable=False)
 
 
@@ -31,7 +33,7 @@ class OurWork(Base):
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String(length=100), unique=True)
     desc = Column(Text)
-    image = Column(Text)
+    image = Column(ImageType(FileSystemStorage(path='static/our_work')))
 
     our_work_details = relationship('OurWorkDetail', back_populates='details')
 
@@ -42,5 +44,5 @@ class OurWorkDetail(Base):
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String(length=100), unique=True)
     desc = Column(Text)
-    image = Column(Text)
+    image = Column(ImageType(FileSystemStorage(path='static/our_work_detail')))
     our_work = Column(Integer, ForeignKey('our_work.id'), nullable=False)

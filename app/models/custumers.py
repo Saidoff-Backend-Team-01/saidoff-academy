@@ -2,6 +2,12 @@ from sqlalchemy import Column, Text, String, Integer
 
 from app.config.database import Base
 
+from fastapi_storages import FileSystemStorage
+from fastapi_storages.integrations.sqlalchemy import ImageType
+
+
+storage = FileSystemStorage(path="static/feedback")
+
 
 class ContactUS(Base):
     __tablename__ = 'contactus'
@@ -18,4 +24,4 @@ class Feedback(Base):
     name = Column(String(length=70))
     job = Column(String(length=70))
     desc = Column(Text)
-    image = Column(Text)
+    image = Column(ImageType(storage=storage))
