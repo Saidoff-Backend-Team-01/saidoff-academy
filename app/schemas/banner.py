@@ -7,6 +7,12 @@ class BannerListSchema(BaseModel):
     desc: str
 
 
+class Why_we_usListSchema(BaseModel):
+    id: int
+    title: str
+    desc: str
+
+
 class BannerCreateSchema(BaseModel):
     title: str
     desc: str
