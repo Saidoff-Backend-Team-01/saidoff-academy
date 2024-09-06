@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import Optional, List
+from typing import Optional
 
 
 class FaqListSchemas(BaseModel):
@@ -10,7 +10,6 @@ class FaqListSchemas(BaseModel):
 
 
 class FaqCreateSchemas(BaseModel):
-    id: int
     question: str
     answer: str
     faq_type: Optional[str] = None

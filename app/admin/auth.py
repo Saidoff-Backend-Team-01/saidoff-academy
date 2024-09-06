@@ -9,7 +9,10 @@ class AdminAuth(AuthenticationBackend):
         form = await request.form()
         username, password = form["username"], form["password"]
         if username and password:
+            print("user, pass: ", username, password, base_settings.ADMIN_USERNAME, base_settings.ADMIN_PASSWORD)
             if username == base_settings.ADMIN_USERNAME and password == base_settings.ADMIN_PASSWORD:
+                request.session.update({"token": base_settings.TOKEN_FOR_ADMIN_AUTH})
+
                 return True
         request.session.update({"token": base_settings.TOKEN_FOR_ADMIN_AUTH})
 
@@ -22,6 +25,7 @@ class AdminAuth(AuthenticationBackend):
 
     async def authenticate(self, request: Request) -> bool:
         token = request.session.get("token")
+        print("token:", token)
         if not token:
             return False
         if token == base_settings.TOKEN_FOR_ADMIN_AUTH:

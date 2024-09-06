@@ -1,14 +1,11 @@
-from typing import List, Optional
+from typing import List
 
 from fastapi import APIRouter, Depends, HTTPException, UploadFile
-from typer import models
 
-from watchfiles import awatch
 
-from app.crud.services import create_services
 from app.schemas.ourteam import OurteamListSchema, OurteamCreateSchema
 from app.crud.ourteam import get_ourteams, create_ourteam
-from app.config.database import SessionLocal, get_db
+from app.config.database import get_db
 from sqlalchemy.orm import Session
 
 router = APIRouter(
