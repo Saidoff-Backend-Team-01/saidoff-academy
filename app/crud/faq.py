@@ -28,7 +28,7 @@ def get_faq(db: Session, faq_type: Optional[str] = None):
 # def create_faq(db: Session, faq: FaqCreateSchemas):
 #     new_faq = Faq(
 #         question=faq.question,
-#         answer=faq.answer,
+#  git lo       answer=faq.answer,
 #         faq_type=faq.faq_type
 #     )
 #     db.add(new_faq)

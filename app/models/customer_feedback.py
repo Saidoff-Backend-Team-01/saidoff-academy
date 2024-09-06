@@ -10,6 +10,6 @@ class Feedbacks(Base):
     position = Column(String, nullable=True)
     name = Column(String, nullable=False)
     image = Column(String, nullable=True)
-    feedback_text = Column(String(lenth=20), nullable=False)
+    feedback_text = Column(String(length=20), nullable=False)
 
     
