@@ -1,8 +1,6 @@
 
 from sqladmin import Admin, ModelView
 
-from app.models.banner import Banner
-# from app.models.faq import Faq
 from app.models.our_team import OurTeam
 from app.models.our_services import OurServices
 # from app.models.faq import Faq
