@@ -5,14 +5,15 @@ from typing import Optional, List
 class OurteamListSchema(BaseModel):
     id: int
     name: str
-    image_data: str
-    position: Optional[str] = None
+    image: str
+    position: str
 
 
 class OurteamCreateSchema(BaseModel):
     name: str
-    image_data: str
+    image: str
     position: Optional[str] = None
+    experience: str
 
     class Config:
         orm_mode = True

@@ -10,11 +10,12 @@ from app.config.database import SessionLocal, get_db
 from sqlalchemy.orm import Session
 
 router = APIRouter(
-    prefix="/services"
+    prefix="/services",
+    tags=["Services"]
 )
 
 
-@router.post("/services/create_services", response_model=ServicesListSchema)
+@router.post("/create_services", response_model=ServicesListSchema)
 def create_new_services(services: ServicesCreateSchema, db: Session = Depends(get_db)):
     try:
         return create_services(db, services)
@@ -22,13 +23,13 @@ def create_new_services(services: ServicesCreateSchema, db: Session = Depends(ge
         raise HTTPException(status_code=500, detail=f"Internal Server Error: {str(e)}")
 
 
-@router.get("/services/", response_model=List[ServicesListSchema])
+@router.get("/", response_model=List[ServicesListSchema])
 def read_services(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
-    services = db.query(Services).offset(skip).limit(limit).all()
+    services = db.query(OurServices).offset(skip).limit(limit).all()
     return services
 
 
-@router.get("/services/{id}", response_model=ServicesListSchema)
+@router.get("/{slug}", response_model=ServicesListSchema)
 def read_service(slug: str, db: Session = Depends(get_db)):
     service = get_services(slug, db)
     if not service:

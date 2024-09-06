@@ -12,16 +12,17 @@ from app.config.database import SessionLocal, get_db
 from sqlalchemy.orm import Session
 
 router = APIRouter(
-    prefix="/ourteam"
+    prefix="/ourteam",
+    tags=["Our_Team"]
 )
 
 
-@router.get("/ourteam", response_model=List[OurteamListSchema])
+@router.get("/", response_model=List[OurteamListSchema])
 def get_ourteam_list(db: Session = Depends(get_db)):
     return get_ourteams(db)
 
 
-@router.post("/ourteam/create_ourteam", response_model=OurteamListSchema)
+@router.post("/create_ourteam", response_model=OurteamListSchema)
 def create_new_ourteam(ourteam: OurteamCreateSchema, db: Session = Depends(get_db)):
     try:
         return create_ourteam(db, ourteam)
