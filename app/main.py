@@ -8,7 +8,7 @@ from app.admin import model_admins
 from app.admin.auth import authentication_backend
 from app.config.settings import base_settings
 
-Base.metadata.create_all(bind=engine)
+# Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     prefix='/api/v1/'
