@@ -1,8 +1,9 @@
 from fastapi import APIRouter, Depends
 from watchfiles import awatch
+import uvicorn
 
 from app.schemas.banner import BannerListSchema, BannerCreateSchema
-from app.crud.banner import get_banners, create_banner
+from app.crud.banner import get_banners, create_banner, get_why_we_us
 from app.config.database import SessionLocal, get_db
 from sqlalchemy.orm import Session
 
@@ -19,3 +20,11 @@ async def banners(db: Session = Depends(get_db)):
 async def banner_create(banner: BannerCreateSchema, db: Session = Depends(get_db)):
     new_banner = create_banner(banner_create=banner, db=db)
     return new_banner
+
+
+@router.get("/why_we_us/")
+async def why_we_us(db: Session = Depends(get_db)):
+    return get_why_we_us(db)
+
+if __name__ == '__main__':
+    uvicorn.run
