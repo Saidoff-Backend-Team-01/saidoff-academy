@@ -1,7 +1,6 @@
 
 from sqladmin import Admin, ModelView
 
-from app.models.banner import Banner
 # from app.models.faq import Faq
 from app.models.our_team import OurTeam
 from app.models.our_services import OurServices
@@ -9,10 +8,12 @@ from app.models.our_services import OurServices
 from app.models.banner import Banner, Why_we_us
 
 
+
 class BannerAdmin(ModelView, model=Banner):
     column_list = [Banner.id, Banner.title, Banner.desc]
     form_columns = [Banner.id, Banner.title, Banner.desc]
     column_searchable_list = [Banner.title]
+
 
 
 class OurteamAdmin(ModelView, model=OurTeam):
@@ -26,10 +27,6 @@ class ServicesAdmin(ModelView, model=OurServices):
     form_columns = [OurServices.id, OurServices.title, OurServices.desc]
     column_searchable_list = [OurServices.title]
 
-
-# class FaqAdmin(ModelView, model=Faq):
-#     column_list = [Faq.id]
-#     column_searchable_list = [Faq.id]
 
 
 class Why_we_usAdmin(ModelView, model=Why_we_us):
