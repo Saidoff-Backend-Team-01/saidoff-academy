@@ -1,19 +1,17 @@
 from fastapi import APIRouter, Depends
-
-
-from app.schemas.banner import BannerListSchema, BannerCreateSchema
-from app.config.database import SessionLocal, get_db
 from sqlalchemy.orm import Session
+
+
+from app.config.database import get_db
+from app.crud.company_crud import get_sponsors
+from app.schemas.company_schemas import SponsorModel
 
 router = APIRouter(
     prefix="/company"
 )
 
-@router.get("/banners")
-async def banners(db: Session = Depends(get_db)):
-    ...
+@router.get('/sponsors', response_model=list[SponsorModel])
+def get_all_sonsors(db: Session = Depends(get_db)):
+    sponsors = get_sponsors(db=db)
 
-
-@router.post("/banner")
-async def banner_create(banner: BannerCreateSchema, db: Session = Depends(get_db)):
-    ...
+    return [SponsorModel(url=sponsor.url, image=sponsor.image).return_data() for sponsor in sponsors]

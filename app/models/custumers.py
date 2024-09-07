@@ -11,6 +11,7 @@ storage = FileSystemStorage(path="static/feedback")
 
 class ContactUS(Base):
     __tablename__ = 'contactus'
+    __table_args__ = {'extend_existing': True}
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String(length=50))
@@ -19,6 +20,7 @@ class ContactUS(Base):
 
 class Feedback(Base):
     __tablename__ = 'feedback'
+    __table_args__ = {'extend_existing': True}
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String(length=70))
