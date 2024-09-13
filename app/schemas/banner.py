@@ -21,13 +21,13 @@ class BannerCreateSchema(BaseModel):
         orm_mode = True
 
 
-
 class PortfolioCategorySchema(BaseModel):
     id: int
     name: str
 
     class Config:
         orm_mode = True
+
 
 class PortfolioItemSchema(BaseModel):
     id: int
@@ -36,6 +36,7 @@ class PortfolioItemSchema(BaseModel):
 
     class Config:
         orm_mode = True
+
 
 class CustomerFeedbackSchema(BaseModel):
     id: int
