@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 
+
 class BannerListSchema(BaseModel):
     id: int
     title: str
@@ -10,6 +11,7 @@ class Why_we_usListSchema(BaseModel):
     id: int
     title: str
     desc: str
+
 
 class BannerCreateSchema(BaseModel):
     title: str
@@ -41,3 +43,4 @@ class CustomerFeedbackSchema(BaseModel):
 
     class Config:
         orm_mode = True
+

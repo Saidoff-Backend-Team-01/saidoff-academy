@@ -3,6 +3,7 @@ from sqlalchemy.orm import relationship
 
 from app.config.database import Base
 
+
 class WhyWeUs(Base):
     __tablename__ = 'why_we_us'
 

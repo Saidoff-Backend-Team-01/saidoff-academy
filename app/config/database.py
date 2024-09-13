@@ -7,7 +7,8 @@ from app.config.settings import base_settings
 # print("Db Name:", base_settings.DB_NAME)
 
 
-SQLALCHEMY_DATABASE_URL = "postgresql://postgres:uluby123@localhost/academy"
+
+SQLALCHEMY_DATABASE_URL = "postgresql://postgres:shahzod0604@localhost/SaidoffGroup"
 
 
 

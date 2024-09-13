@@ -2,6 +2,7 @@ from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 from app.config.database import Base
 
+
 class OurServices(Base):
     __tablename__ = 'our_services'
 
