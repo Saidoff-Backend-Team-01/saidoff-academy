@@ -3,8 +3,11 @@ from sqlalchemy.orm import relationship
 
 from app.config.database import Base
 
-class Service(Base):
-    __tablename__ = 'service'
+class SocialMedias(Base):
+    __tablename__ = 'social_medias'
+
     id = Column(Integer, primary_key=True, autoincrement=True)
-    title = Column(String, nullable=False)
-    desc = Column(String, nullable=False)
+    image = Column(String, nullable=False)
+    link = Column(String, nullable=False)
+
+    
