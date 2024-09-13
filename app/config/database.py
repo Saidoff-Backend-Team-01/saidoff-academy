@@ -8,7 +8,7 @@ from app.config.settings import base_settings
 
 
 
-SQLALCHEMY_DATABASE_URL = "postgresql://postgres:shahzod0604@localhost/SaidoffGroup"
+SQLALCHEMY_DATABASE_URL = "postgresql://postgres:12345sh_@localhost/SaidoffGroup"
 
 
 
