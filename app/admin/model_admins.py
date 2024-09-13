@@ -14,7 +14,7 @@ from app.models.banner import Banner, Why_we_us
 
 class BannerAdmin(ModelView, model=Banner):
     column_list = [Banner.id, Banner.title, Banner.desc]
-    form_columns = [Banner.id, Banner.title, Banner.desc]
+    form_columns = [Banner.id, Banner.title, Banner.desc, Banner.bg_image, Banner.phone_num]
     column_searchable_list = [Banner.title]
 
 
