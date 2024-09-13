@@ -4,7 +4,7 @@ from sqlalchemy.orm import relationship
 from app.config.database import Base
 
 
-class FaqType(PyEnum):
+class FaqType(Enum):
     GENERAL = "general"
     COMPANY = "company"
 
