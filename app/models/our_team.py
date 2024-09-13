@@ -3,6 +3,7 @@ from sqlalchemy.orm import relationship
 
 from app.config.database import Base
 
+
 class OurTeam(Base):
     __tablename__ = 'our_team'
 
