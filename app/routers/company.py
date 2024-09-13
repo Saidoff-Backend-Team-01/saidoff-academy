@@ -7,6 +7,7 @@ from app.crud.banner import get_banners, create_banner, get_why_we_us
 from app.config.database import SessionLocal, get_db
 from sqlalchemy.orm import Session
 
+
 router = APIRouter(
     prefix="/company"
 )
