@@ -14,11 +14,3 @@ class Banner(Base):
     desc = Column(String, nullable=False)
     bg_image = Column(ImageType(storage=FileSystemStorage(path="app/media/banner")), nullable=True)
     phone_num = Column(String(length=20), nullable=False)
-
-#
-# class Why_we_us(Base):
-#     __tablename__ = 'why_we_us'
-#
-#     id = Column(Integer, primary_key=True, autoincrement=True)
-#     title = Column(String, nullable=False)
-#     desc = Column(String, nullable=False)
