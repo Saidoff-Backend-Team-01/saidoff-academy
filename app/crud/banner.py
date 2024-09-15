@@ -3,6 +3,7 @@ from sqlalchemy.orm import Session
 
 from app.schemas.banner import BannerListSchema, BannerCreateSchema
 from app.models.banner import Banner
+from app.models.why_we_us import WhyWeUs
 
 
 # def get_banners(db: Session):
@@ -14,7 +15,7 @@ def get_banners(db: Session):
 
 
 def get_why_we_us(db: Session):
-    return db.query(Why_we_us).order_by(desc(Why_we_us.id)).limit(3).all()
+    return db.query(WhyWeUs).order_by(desc(WhyWeUs.id)).limit(3).all()
 
 
 def create_banner(db: Session, banner_create: BannerCreateSchema):

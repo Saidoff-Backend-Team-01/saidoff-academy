@@ -2,8 +2,8 @@ from fastapi import APIRouter, Depends
 from watchfiles import awatch
 
 from app.crud.ourteam import get_ourteams
-from app.schemas.banner import BannerListSchema, BannerCreateSchema
-from app.crud.banner import get_banners, create_banner
+from app.schemas.banner import BannerListSchema, BannerCreateSchema, PortfolioCategorySchema, PortfolioItemSchema, CustomerFeedbackSchema
+from app.crud.banner import *
 from app.config.database import SessionLocal, get_db
 from sqlalchemy.orm import Session
 from typing import List
