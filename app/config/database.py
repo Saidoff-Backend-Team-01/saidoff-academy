@@ -3,7 +3,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import os
 
-SQLALCHEMY_DATABASE_URL = "postgresql://postgres:12345sh_@localhost/saidoff_academy"
+SQLALCHEMY_DATABASE_URL = "postgresql+psycopg2://saidadmin:123@localhost/saidb"
 
 SQLALCHEMY_DATABASE_URL_TESTING = "postgresql://postgres:12345sh_@localhost/saidoff_academy_test"
 

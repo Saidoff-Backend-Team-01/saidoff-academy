@@ -1,9 +1,7 @@
 from typing import List, Optional
 
 from fastapi import APIRouter, Depends, HTTPException, UploadFile, Query
-from typer import models
 
-from watchfiles import awatch
 
 from app.crud.faq import get_faq
 from app.schemas.faq import FaqListSchemas

@@ -12,7 +12,7 @@ class Banner(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     title = Column(String, nullable=False)
     desc = Column(String, nullable=False)
-    bg_image = Column(ImageType(storage=FileSystemStorage(path="/media/banner")), nullable=True)
+    bg_image = Column(ImageType(storage=FileSystemStorage(path="media/banner")), nullable=True)
     phone_num = Column(String(length=20), nullable=False)
 
 #

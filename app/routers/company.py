@@ -1,5 +1,4 @@
 from fastapi import APIRouter, Depends
-from watchfiles import awatch
 
 from app.crud.ourteam import get_ourteams
 from app.schemas.banner import BannerListSchema, BannerCreateSchema
