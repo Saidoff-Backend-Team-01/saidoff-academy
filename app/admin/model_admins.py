@@ -5,7 +5,8 @@ from sqladmin import Admin, ModelView
 from app.models.our_team import OurTeam
 from app.models.our_services import OurServices
 # from app.models.faq import Faq
-from app.models.banner import Banner, Why_we_us
+from app.models.banner import Banner
+from app.models.why_we_us import WhyWeUs
 
 
 
@@ -29,5 +30,5 @@ class ServicesAdmin(ModelView, model=OurServices):
 
 
 
-class Why_we_usAdmin(ModelView, model=Why_we_us):
-    column_list = [Why_we_us.id, Why_we_us.title, Why_we_us.desc]
+class Why_we_usAdmin(ModelView, model=WhyWeUs):
+    column_list = [WhyWeUs.id, WhyWeUs.title, WhyWeUs.desc]
