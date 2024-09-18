@@ -13,4 +13,5 @@ class WhyWeUs(Base):
     desc = Column(String, nullable=False)
     bg_image = Column(ImageType(storage=FileSystemStorage(path='media/why_we')), nullable=False)
 
-    
+    class Meta:
+        extend_existing = True

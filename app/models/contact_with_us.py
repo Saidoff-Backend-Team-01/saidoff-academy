@@ -1,5 +1,4 @@
 from sqlalchemy import Column, Integer, String, Text, ForeignKey
-from sqlalchemy.orm import relationship
 
 from app.config.database import Base
 
@@ -14,4 +13,3 @@ class ContactWithUs(Base):
 
     
     
-
