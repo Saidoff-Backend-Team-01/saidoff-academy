@@ -53,6 +53,3 @@ def read_feedbacks(skip: int = 0, limit: int = 100, db: Session = Depends(get_db
 @router.get("/why_we_us/")
 async def why_we_us(db: Session = Depends(get_db)):
     return get_why_we_us(db)
-
-if __name__ == '__main__':
-    uvicorn.run

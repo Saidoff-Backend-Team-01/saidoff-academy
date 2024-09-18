@@ -3,9 +3,9 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import os
 
-SQLALCHEMY_DATABASE_URL = "postgresql://postgres:12345sh_@localhost/saidoff_academy"
+SQLALCHEMY_DATABASE_URL = "postgresql://postgres:sayfullo077@localhost/saidoff_academy"
 
-SQLALCHEMY_DATABASE_URL_TESTING = "postgresql://postgres:12345sh_@localhost/saidoff_academy_test"
+SQLALCHEMY_DATABASE_URL_TESTING = "postgresql://postgres:sayfullo077@localhost/saidoff_academy_test"
 
 if os.environ.get('ENVIRONMENT') == "testing":
      engine = create_engine(
