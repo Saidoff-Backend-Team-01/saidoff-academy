@@ -3,7 +3,15 @@ from sqladmin import Admin, ModelView
 from app.models.banner import Banner
 from app.models.why_we_us import WhyWeUs
 from app.models.our_services import OurServices
+<<<<<<< HEAD
 from app.models.our_team import OurTeam
+=======
+# from app.models.faq import Faq
+from app.models.banner import Banner
+from app.models.why_we_us import WhyWeUs
+
+
+>>>>>>> 634d1187a51850019666e0e4f130ef69763c4d5f
 
 class BannerAdmin(ModelView, model=Banner):
     column_list = [Banner.id, Banner.title, Banner.desc]
@@ -33,5 +41,11 @@ class OurServicessAdmin(ModelView, model=OurServices):
     form_columns = [OurServices.id, OurServices.title, OurServices.desc]
     column_searchable_list = [OurServices.title]
 
+<<<<<<< HEAD
 class WhyWeUsAdmin(ModelView, model=WhyWeUs):
+=======
+
+
+class Why_we_usAdmin(ModelView, model=WhyWeUs):
+>>>>>>> 634d1187a51850019666e0e4f130ef69763c4d5f
     column_list = [WhyWeUs.id, WhyWeUs.title, WhyWeUs.desc]

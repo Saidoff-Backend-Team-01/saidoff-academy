@@ -1,9 +1,7 @@
 from typing import List, Optional
 
 from fastapi import APIRouter, Depends, HTTPException, UploadFile
-from typer import models
 
-from watchfiles import awatch
 
 from app.crud.services import create_services
 from app.schemas.ourteam import OurteamListSchema, OurteamCreateSchema

@@ -1,8 +1,8 @@
-"""uprgade banner field
+"""First migration
 
-Revision ID: e8f39c43f885
-Revises: 0379c15ce661
-Create Date: 2024-09-13 20:24:14.643106
+Revision ID: ffdcdb3c80ed
+Revises: 455744177a16
+Create Date: 2024-09-15 14:50:47.497168
 
 """
 from typing import Sequence, Union
@@ -12,8 +12,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = 'e8f39c43f885'
-down_revision: Union[str, None] = '0379c15ce661'
+revision: str = 'ffdcdb3c80ed'
+down_revision: Union[str, None] = '455744177a16'
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
