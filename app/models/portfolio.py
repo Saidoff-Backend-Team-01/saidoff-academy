@@ -12,6 +12,7 @@ class Portfolio(Base):
 
     categories = relationship("PortfolioCategory", back_populates="portfolio")
 
+
 class PortfolioCategory(Base):
     __tablename__ = 'portfolio_category'
 
@@ -22,6 +23,9 @@ class PortfolioCategory(Base):
     portfolio = relationship("Portfolio", back_populates="categories")
 
     items = relationship("PortfolioItem", back_populates="category")
+
+    contacts = relationship("ContactWithUs", back_populates="category")
+
 
 class PortfolioItem(Base):
     __tablename__ = 'portfolio_item'

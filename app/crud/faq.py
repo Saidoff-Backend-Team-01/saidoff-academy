@@ -67,3 +67,4 @@ def create_faq(db: Session, faq: FaqCreateSchemas):
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="An error creating FAQ"
         )
+

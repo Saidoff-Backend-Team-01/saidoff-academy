@@ -1,10 +1,11 @@
+import enum
 from sqlalchemy import Column, Integer, String, Enum
 from sqlalchemy.orm import relationship
 from enum import Enum as PyEnum
 from app.config.database import Base
 
 
-class FaqType(PyEnum):
+class FaqType(enum.Enum):
     GENERAL = "general"
     COMPANY = "company"
 

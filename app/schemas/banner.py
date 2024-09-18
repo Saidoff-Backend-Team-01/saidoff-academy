@@ -21,27 +21,29 @@ class BannerCreateSchema(BaseModel):
         orm_mode = True
 
 
-# class PortfolioCategorySchema(BaseModel):
-#     id: int
-#     name: str
-#
-#     class Config:
-#         orm_mode = True
-#
-#
-# class PortfolioItemSchema(BaseModel):
-#     id: int
-#     name: str
-#     category_id: int
-#
-#     class Config:
-#         orm_mode = True
+class PortfolioCategorySchema(BaseModel):
+    id: int
+    name: str
+    portfolio_id: str
+
+    class Config:
+        orm_mode = True
 
 
-# class CustomerFeedbackSchema(BaseModel):
-#     id: int
-#     customer_name: str
-#     feedback: str
-#
-#     class Config:
-#         orm_mode = True
+class PortfolioItemSchema(BaseModel):
+    id: int
+    name: str
+    category_id: int
+
+    class Config:
+        orm_mode = True
+
+
+class CustomerFeedbackSchema(BaseModel):
+    id: int
+    customer_name: str
+    feedback: str
+
+    class Config:
+        orm_mode = True
+

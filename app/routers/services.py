@@ -2,8 +2,6 @@ from typing import List
 
 from fastapi import APIRouter, Depends, HTTPException
 
-from watchfiles import awatch
-
 from app.schemas.services import ServicesListSchema, ServicesCreateSchema
 from app.crud.services import *
 from app.config.database import SessionLocal, get_db
