@@ -12,4 +12,5 @@ class WhyWeUs(Base):
     desc = Column(String, nullable=False)
     bg_image = Column(String, nullable=False)
 
-    
+    class Meta:
+        extend_existing = True
