@@ -1,34 +1,44 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, Text
+from sqlalchemy import Column, Integer, String, ForeignKey, Table
 from sqlalchemy.orm import relationship
+from fastapi_storages import FileSystemStorage
+from fastapi_storages.integrations.sqlalchemy import ImageType
+
 from app.config.database import Base
 
-class Portfolio(Base):
-    __tablename__ = 'portfolio'
+
+tag_and_portfolio = Table(
+    'tag_and_portfolio', Base.metadata,
+    Column('tag_id', Integer, ForeignKey('portfolio_tag.id'), primary_key=True),
+    Column('portfolio_id', Integer, ForeignKey('portfolio_item.id'), primary_key=True),
+
+)
+
+class PortfolioTag(Base):
+    __tablename__ = 'portfolio_tag'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    title = Column(String(length=255), nullable=False)
-    description = Column(Text, nullable=False)
-    button_text = Column(String(length=50), nullable=True)
+    name = Column(String(length=100), nullable=False, unique=True)
 
-    categories = relationship("PortfolioCategory", back_populates="portfolio")
+    item = relationship("PortfolioItem", secondary=tag_and_portfolio, back_populates="tags")
+
+    
 
 class PortfolioCategory(Base):
     __tablename__ = 'portfolio_category'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(length=100), nullable=False)
-    portfolio_id = Column(Integer, ForeignKey('portfolio.id'), nullable=False)
-
-    portfolio = relationship("Portfolio", back_populates="categories")
 
     items = relationship("PortfolioItem", back_populates="category")
+
 
 class PortfolioItem(Base):
     __tablename__ = 'portfolio_item'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     title = Column(String(length=255), nullable=False)
-    image = Column(String(length=255), nullable=False)
+    image = Column(ImageType(storage=FileSystemStorage(path='media/portfolio')), nullable=False)
     category_id = Column(Integer, ForeignKey('portfolio_category.id'), nullable=False)
 
     category = relationship("PortfolioCategory", back_populates="items")
+    tags = relationship("PortfolioTag", secondary=tag_and_portfolio, back_populates="item")

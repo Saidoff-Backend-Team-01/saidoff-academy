@@ -27,7 +27,8 @@ admin = Admin(app, engine, authentication_backend=authentication_backend)
 
 admin.add_view(model_admins.BannerAdmin)
 admin.add_view(model_admins.Why_we_usAdmin)
-
+admin.add_view(model_admins.FeatureAdmin)
+admin.add_view(model_admins.PlanAdmin)
 
 # app.include_router(company_router)
 app.include_router(our_team_router)
