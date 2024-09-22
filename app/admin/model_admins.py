@@ -9,6 +9,18 @@ from app.models.banner import Banner
 from app.models.why_we_us import WhyWeUs
 from app.models.portfolio import *
 from app.models.contact_with_us import ContactWithUs
+from app.models.translation import ItemTranslation, Item
+
+
+class TranslationAdmin(ModelView, model=ItemTranslation):
+    column_list = [ItemTranslation.id, ItemTranslation.item_id, ItemTranslation.language_code,
+                   ItemTranslation.translated_name, ItemTranslation.translated_description]
+    form_columns = [ItemTranslation.id, ItemTranslation.item_id, ItemTranslation.translated_name]
+
+
+class TranslationItemAdmin(ModelView, model=Item):
+    column_list = [Item.id, Item.name, Item.description]
+    form_columns = [Item.id, Item.name, Item.description]
 
 
 class BannerAdmin(ModelView, model=Banner):
