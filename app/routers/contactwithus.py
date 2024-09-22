@@ -1,11 +1,11 @@
 from typing import List, Optional
 
-from fastapi import APIRouter, Depends, HTTPException, UploadFile, Query
+from fastapi import APIRouter, Depends, HTTPException
 
 
 from app.crud.contactwithus import create_contact
 from app.schemas.contactwithus import ContactWithUsSchema, ContactWithUsListSchema
-from app.config.database import SessionLocal, get_db
+from app.config.database import get_db
 from sqlalchemy.orm import Session
 
 router = APIRouter(

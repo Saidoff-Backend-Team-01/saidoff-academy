@@ -10,7 +10,6 @@ from sqlalchemy.orm import Session
 from typing import List
 from fastapi import FastAPI, Depends, HTTPException, Query
 
-from app.schemas.ourteam import OurteamCreateSchema
 
 router = APIRouter(
     prefix="/company"
