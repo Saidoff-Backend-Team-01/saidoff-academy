@@ -44,6 +44,7 @@ admin.add_view(model_admins.PortfolioItemAdmin)
 admin.add_view(model_admins.PortfolioTagAdmin)
 admin.add_view(model_admins.OurteamAdmin)
 admin.add_view(model_admins.ServicesAdmin)
+admin.add_view(model_admins.SponsorAdmin)
 
 
 
