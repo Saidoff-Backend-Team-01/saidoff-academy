@@ -5,7 +5,7 @@ import os
 
 SQLALCHEMY_DATABASE_URL = "postgresql+psycopg2://postgres:shahzod0604@localhost/SaidoffGroup"
 
-SQLALCHEMY_DATABASE_URL_TESTING = "postgresql://postgres:shahzod0604@localhost/SaidoffGroup"
+SQLALCHEMY_DATABASE_URL_TESTING = "postgresql://postgres:shahzod0604@localhost/SaidoffAcademy"
 
 if os.environ.get('ENVIRONMENT') == "testing":
      engine = create_engine(
