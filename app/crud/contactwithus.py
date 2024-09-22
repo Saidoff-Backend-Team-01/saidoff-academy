@@ -5,19 +5,26 @@ from sqlalchemy.exc import IntegrityError
 
 from app.models.contact_with_us import ContactWithUs
 from app.schemas.contactwithus import ContactWithUsSchema
-from app.models.portfolio import PortfolioCategory
+from app.models.our_services import OurServices
 
 
 def create_contact(db: Session, contact: ContactWithUsSchema):
-    category = db.query(PortfolioCategory).filter(PortfolioCategory.id == contact.category_id).first()
+    service = db.query(OurServices).filter(OurServices.id == contact.service_type).first()
 
-    if not category:
+    if not service:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Invalid category_id"
+            detail="Invalid service_type"
         )
 
-    db_contact = ContactWithUs(**contact.dict())
+
+    db_contact = ContactWithUs(
+        name=contact.name,
+        phone_number=contact.phone_number,
+        msg=contact.msg,
+        service_type=contact.service_type  
+    )
+
     try:
         db.add(db_contact)
         db.commit()

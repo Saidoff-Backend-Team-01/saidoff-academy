@@ -29,10 +29,3 @@ def read_faqs(
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Internal Server Error: {str(e)}")
 
-
-@router.post("/create_faq", response_model=FaqListSchemas)
-def create_new_faq(faq: FaqCreateSchemas, db: Session = Depends(get_db)):
-    try:
-        return create_faq(db, faq)
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Internal Server Error: {str(e)}")

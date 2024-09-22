@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, DateTime, Boolean, ForeignKey
+from sqlalchemy import Column, Integer, String
 from fastapi_storages import FileSystemStorage
 from fastapi_storages.integrations.sqlalchemy import ImageType
 

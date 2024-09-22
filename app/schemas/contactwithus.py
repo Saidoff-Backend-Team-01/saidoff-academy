@@ -3,18 +3,17 @@ from typing import Optional
 
 
 class ContactWithUsListSchema(BaseModel):
-    id: int
     name: str
-    pthone_number: int
-    category_id: int
-    desc: str
+    phone_number: int
+    service_type: int
+    msg: str
 
 
 class ContactWithUsSchema(BaseModel):
     name: str
     phone_number: int
-    category_id: int
-    desc: str
+    service_type: int
+    msg: str
 
     class Config:
         orm_mode = True

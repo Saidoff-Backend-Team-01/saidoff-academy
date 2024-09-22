@@ -14,7 +14,7 @@ router = APIRouter(
 )
 
 
-@router.post("/create_contact", response_model=ContactWithUsListSchema)
+@router.post("/create_contact")
 def create_new_contact(contact: ContactWithUsSchema, db: Session = Depends(get_db)):
     try:
         return create_contact(db, contact)

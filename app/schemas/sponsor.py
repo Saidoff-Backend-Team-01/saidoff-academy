@@ -1,4 +1,6 @@
-from pydantic import BaseModel, HttpUrl, root_validator
+from pydantic import BaseModel, HttpUrl
+
+from app.config.settings import BASE_URL
 
 
 class SponsorModel(BaseModel):
@@ -7,7 +9,7 @@ class SponsorModel(BaseModel):
 
 
     def return_data(self) -> str:
-        base_url = 'http://127.0.0.1:8005'
+        base_url = BASE_URL
         image_url =  f'{base_url}/{self.image}'
         url = self.url
 

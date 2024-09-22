@@ -16,12 +16,7 @@ router = APIRouter(
 
 @router.get("/", response_model=List[OurteamListSchema])
 def get_ourteam_list(db: Session = Depends(get_db)):
-    return get_ourteams(db)
+    ourteam = get_ourteams(db)
 
+    return [OurteamListSchema(id=member.id, name=member.name, image=member.image, position=member.position, experience=member.experience).return_data() for member in ourteam]
 
-@router.post("/create_ourteam", response_model=OurteamListSchema)
-def create_new_ourteam(ourteam: OurteamCreateSchema, db: Session = Depends(get_db)):
-    try:
-        return create_ourteam(db, ourteam)
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Internal Server Error: {str(e)}")

@@ -21,6 +21,11 @@ class PortfolioTag(Base):
 
     item = relationship("PortfolioItem", secondary=tag_and_portfolio, back_populates="tags")
 
+
+    def __str__(self):
+        return self.name
+
+
     
 
 class PortfolioCategory(Base):
@@ -30,6 +35,12 @@ class PortfolioCategory(Base):
     name = Column(String(length=100), nullable=False)
 
     items = relationship("PortfolioItem", back_populates="category")
+
+
+    def __str__(self):
+        return self.name
+
+
 
 
 class PortfolioItem(Base):
@@ -42,3 +53,7 @@ class PortfolioItem(Base):
 
     category = relationship("PortfolioCategory", back_populates="items")
     tags = relationship("PortfolioTag", secondary=tag_and_portfolio, back_populates="item")
+
+    def __str__(self):
+        return self.title
+
