@@ -15,13 +15,13 @@ router = APIRouter(
 
 
 @router.get("/", response_model=List[ServicesListSchema])
-def read_services(db: Session = Depends(get_db)):
+async def read_services(db: Session = Depends(get_db)):
     services = db.query(OurServices).all()
     return [ServicesListSchema(id=service.id, title=service.title, desc=service.desc, slug=service.slug, image=service.image).return_data() for service in services]
 
 
 @router.get("/{slug}", response_model=ServicesListSchema)
-def read_service(slug: str, db: Session = Depends(get_db)):
+async def read_service(slug: str, db: Session = Depends(get_db)):
     service = get_services(slug, db)
     if not service:
         raise HTTPException(status_code=404, detail="Service not found")

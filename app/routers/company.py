@@ -16,7 +16,7 @@ router = APIRouter(
 )
 
 
-@router.get("/banners")
+@router.get("/banners", response_model=list[BannerListSchema])
 async def banners(db: Session = Depends(get_db)):
     return get_banners(db)
 

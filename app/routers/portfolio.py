@@ -12,15 +12,15 @@ router = APIRouter(prefix='/portfolio')
 
 
 @router.get('/category', response_model=list[PortfolioCategoryModel])
-def category_view(db: Session = Depends(get_db)):
+async def category_view(db: Session = Depends(get_db)):
     return categories_get(db=db)
 
 
 @router.get('/portfolio', response_model=list[PortfolioItemModel])
-def portfolio_view(db: Session = Depends(get_db), tags: Optional[List[str]] = Query(None)):
+async def portfolio_view(db: Session = Depends(get_db), tags: Optional[List[str]] = Query(None)):
     return item_get(db=db, tags=tags)
 
 
 @router.get('/portfolio/{category}', response_model=list[PortfolioItemModel])
-def portfolio_filter_view(category: str, db: Session = Depends(get_db)):
+async def portfolio_filter_view(category: str, db: Session = Depends(get_db)):
     return item_filter_get(db=db, category=category)

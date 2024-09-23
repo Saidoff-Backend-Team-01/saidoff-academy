@@ -73,6 +73,7 @@ class ConfigAdmin(ModelView, model=Config):
     name = 'Config'
     name_plural = 'Config'
 
+
     column_list = [Config.id, Config.email, Config.phone]
     form_columns = [Config.email, Config.phone]
 

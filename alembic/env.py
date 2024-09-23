@@ -18,6 +18,7 @@ from app.models.social_medias import *
 from app.models.sponsors import *
 from app.models.why_we_us import *
 from app.models.plan import *
+from app.models.config import *
 
 
 # this is the Alembic Config object, which provides

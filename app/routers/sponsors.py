@@ -11,7 +11,7 @@ router = APIRouter(
 )
 
 @router.get('/sponsors', response_model=list[SponsorModel])
-def get_all_sonsors(db: Session = Depends(get_db)):
+async def get_all_sonsors(db: Session = Depends(get_db)):
     sponsors = get_sponsors(db=db)
 
     return [SponsorModel(url=sponsor.url, image=sponsor.image).return_data() for sponsor in sponsors]

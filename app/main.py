@@ -15,6 +15,7 @@ from app.routers.sponsors import router as sponsors_router
 from app.routers.contactwithus import router as contact_router
 from app.routers.why_we_us import router as why_we_us_router
 from app.routers.portfolio import router as portfolio_router
+from app.routers.config import router as config_router
 from sqladmin import Admin, ModelView
 from app.admin import model_admins
 from app.admin.auth import authentication_backend
@@ -59,6 +60,7 @@ app.include_router(sponsors_router)
 app.include_router(contact_router)
 app.include_router(why_we_us_router)
 app.include_router(portfolio_router)
+app.include_router(config_router)
 
 app.mount("/media", StaticFiles(directory="media"), name="media")
 

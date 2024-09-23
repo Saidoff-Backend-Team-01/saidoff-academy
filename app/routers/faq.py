@@ -15,7 +15,7 @@ router = APIRouter(
 
 
 @router.get("/", response_model=List[FaqListSchemas])
-def read_faqs(
+async def read_faqs(
     faq_type: Optional[str] = Query(None, description="FAQ turi bo'yicha filtr"),
     db: Session = Depends(get_db)
 ):
