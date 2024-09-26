@@ -1,5 +1,10 @@
 from sqladmin import Admin, ModelView
 
+from app.models.banner import Banner
+from app.models.why_we_us import WhyWeUs
+from app.models.our_services import OurServices
+from app.models.our_team import OurTeam
+
 
 from app.models.our_team import OurTeam
 from app.models.our_services import OurServices, OurServiceInfo
@@ -15,8 +20,6 @@ from app.models.social_medias import SocialMedias
 from app.models.portfolio import PortfolioCategory, PortfolioItem, PortfolioTag
 from app.models.sponsors import Sponsors
 
-
-
 class BannerAdmin(ModelView, model=Banner):
     name = 'Banner'
     name_plural = 'Banners'
@@ -25,6 +28,17 @@ class BannerAdmin(ModelView, model=Banner):
     form_columns = [Banner.id, Banner.title, Banner.desc, Banner.page_type]
     column_searchable_list = [Banner.title]
 
+
+class WhyWeUs_Admin(ModelView, model=WhyWeUs):
+    column_list = [WhyWeUs.id, WhyWeUs.title, WhyWeUs.desc]
+    form_columns = [WhyWeUs.id, WhyWeUs.title, WhyWeUs.desc]
+    column_searchable_list = [WhyWeUs.title]
+    
+    
+class OurServices_Admin(ModelView, model=OurServices):
+    column_list = [OurServices.id, OurServices.title, OurServices.desc]
+    form_columns = [OurServices.id, OurServices.title, OurServices.desc]
+    column_searchable_list = [OurServices.title]
 
 
 class OurteamAdmin(ModelView, model=OurTeam):
@@ -36,6 +50,7 @@ class OurteamAdmin(ModelView, model=OurTeam):
     column_searchable_list = [OurTeam.name]
 
 
+
 class ServicesAdmin(ModelView, model=OurServices):
     name = 'Service'
     name_plural = 'Services'
@@ -45,11 +60,10 @@ class ServicesAdmin(ModelView, model=OurServices):
     column_searchable_list = [OurServices.title]
 
 
-
 class Why_we_usAdmin(ModelView, model=WhyWeUs):
+
     name = 'Why we us'
     name_plural = 'Why we us'
-
     column_list = [WhyWeUs.id, WhyWeUs.title, WhyWeUs.desc]
 
 

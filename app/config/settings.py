@@ -1,16 +1,13 @@
 import logging
 import pathlib
-
 import decouple
 from pydantic_settings import BaseSettings
-from pydantic import BaseConfig
 ROOT_DIR: pathlib.Path = pathlib.Path(__file__).parent.parent.parent.parent.parent.resolve()
 
 BASE_URL = decouple.config("BASE_URL")
 
 
 class BackendBaseSettings(BaseSettings):
-
     TITLE: str = "Saidoff Academy Documentation of Backend Part"
     VERSION: str = "0.1.0"
     TIMEZONE: str = "UTC"
@@ -87,7 +84,7 @@ class BackendBaseSettings(BaseSettings):
         validate_assignment: bool = True
 
     @property
-    def set_backend_app_attributes(self) -> dict[str, None]:
+    def set_backend_app_attributes(self) -> dict[str, str | bool]:
         """
         Set all `FastAPI` class' attributes with the custom values defined in `BackendBaseSettings`.
         """
@@ -102,6 +99,5 @@ class BackendBaseSettings(BaseSettings):
             "openapi_prefix": self.OPENAPI_PREFIX,
             "api_prefix": self.API_PREFIX,
         }
-
 
 base_settings = BackendBaseSettings()

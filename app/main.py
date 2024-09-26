@@ -6,7 +6,12 @@ from fastapi.staticfiles import StaticFiles
 
 from app.config.database import Base, SessionLocal, engine
 
+
 from app.routers.company import router as company_router
+from app.routers.service import router as service_router
+
+from app.routers.company import router as company_router
+
 from app.routers.ourteam import router as our_team_router
 from app.routers.services import router as services_router
 from app.routers.faq import router as faq_router
@@ -31,6 +36,8 @@ app = FastAPI(
 admin = Admin(app, engine, authentication_backend=authentication_backend)
 
 admin.add_view(model_admins.BannerAdmin)
+admin.add_view(model_admins.Why_we_us_Admin)
+admin.add_view(model_admins.Service_Admin)
 admin.add_view(model_admins.Why_we_usAdmin)
 admin.add_view(model_admins.FeatureAdmin)
 admin.add_view(model_admins.PlanAdmin)
