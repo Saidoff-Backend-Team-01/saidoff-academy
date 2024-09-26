@@ -1,8 +1,6 @@
 import enum
 from sqlalchemy import Column, Integer, String, Enum
-from sqlalchemy.orm import relationship
-from enum import Enum as PyEnum
-
+from sqlalchemy.orm import validates
 from app.config.database import Base
 
 
@@ -16,8 +14,14 @@ class Faq(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     question = Column(String, nullable=False)
     answer = Column(String, nullable=False)
+    order = Column(Integer, nullable=False)
     faq_type = Column(Enum(FaqType), nullable=False)
 
 
-
+    @validates('order')
+    def validate_order(self, key, value):
+        if value < 1:
+            raise ValueError('Oreder have to be minimum 1')
+        
+        return value
 

@@ -4,6 +4,8 @@ import decouple
 from pydantic_settings import BaseSettings
 ROOT_DIR: pathlib.Path = pathlib.Path(__file__).parent.parent.parent.parent.parent.resolve()
 
+BASE_URL = decouple.config("BASE_URL")
+
 
 class BackendBaseSettings(BaseSettings):
     TITLE: str = "Saidoff Academy Documentation of Backend Part"
@@ -16,8 +18,8 @@ class BackendBaseSettings(BaseSettings):
     ADMIN_PASSWORD: str = decouple.config("ADMIN_PASSWORD")
     SECRET_KEY: str = decouple.config("SECRET_KEY")
     TOKEN_FOR_ADMIN_AUTH: str = decouple.config("TOKEN_FOR_ADMIN_AUTH")
-    DB_NAME: str = decouple.config("DB_NAME")
-    DB_PASSWORD: str = decouple.config("DB_PASSWORD")
+    # DB_NAME: str = decouple.config("DB_NAME")
+    # DB_PASSWORD: str = decouple.config("DB_PASSWORD")
 
     # SERVER_HOST: str = decouple.config("BACKEND_SERVER_HOST", cast=str)  # type: ignore
     # SERVER_PORT: int = decouple.config("BACKEND_SERVER_PORT", cast=int)  # type: ignore

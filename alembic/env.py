@@ -3,6 +3,7 @@ from logging.config import fileConfig
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 
+
 from alembic import context
 
 from app.config.database import Base
@@ -16,6 +17,8 @@ from app.models.portfolio import *
 from app.models.social_medias import *
 from app.models.sponsors import *
 from app.models.why_we_us import *
+from app.models.plan import *
+from app.models.config import *
 
 
 # this is the Alembic Config object, which provides
@@ -24,6 +27,7 @@ config = context.config
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
+
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
@@ -44,6 +48,9 @@ def run_migrations_offline() -> None:
 
     This configures the context with just a URL
     and not an Engine, though an Engine is acceptable
+<<<<<<< HEAD
+    here as well. By skipping the Engine creation,
+=======
     here as well.  By skipping the Engine creation
     we don't even need a DBAPI to be available.
 
