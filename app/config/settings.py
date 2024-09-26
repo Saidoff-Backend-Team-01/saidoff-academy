@@ -6,6 +6,8 @@ from pydantic_settings import BaseSettings
 from pydantic import BaseConfig
 ROOT_DIR: pathlib.Path = pathlib.Path(__file__).parent.parent.parent.parent.parent.resolve()
 
+BASE_URL = decouple.config("BASE_URL")
+
 
 class BackendBaseSettings(BaseSettings):
 

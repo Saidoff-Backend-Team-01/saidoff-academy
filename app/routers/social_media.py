@@ -10,5 +10,5 @@ router = APIRouter(prefix='/social')
 
 
 @router.get('/socilamedia', response_model=list[SocilaMediaModel])
-def social_media_get(db: Session = Depends(get_db)):
+async def social_media_get(db: Session = Depends(get_db)):
     return get_socialmedia(db=db)
