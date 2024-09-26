@@ -5,6 +5,10 @@ import uvicorn
 
 from app.config.database import Base, SessionLocal, engine, get_db
 
+from fastapi import FastAPI, Request
+from babel import Locale
+from babel.support import Translations
+
 from fastapi import FastAPI, Request, Depends
 from sqlalchemy.orm import Session
 from . import models, crud
@@ -29,6 +33,8 @@ app = FastAPI(
 
 admin = Admin(app, engine, authentication_backend=authentication_backend)
 
+translations = Translations.load('translations', locales=['en', 'es'])
+
 admin.add_view(model_admins.BannerAdmin)
 admin.add_view(model_admins.Why_we_usAdmin)
 
@@ -44,5 +50,24 @@ app.include_router(contact_router)
 app.include_router(Translation_router)
 
 
+
+# app = FastAPI()
+
+
+
+# @app.middleware("http")
+# async def set_language_locale(request: Request, call_next):
+#     # Detect language from request (using headers, query params, etc.)
+#     lang = request.headers.get('Accept-Language', 'en')
+#     locale = Locale.parse(lang, sep='-')
+#
+#     # Store the locale in request state for later access
+#     request.state.locale = locale
+#     request.state.translations = translations
+#     response = await call_next(request)
+#     return response
+
+
 if __name__ == '__main__':
     uvicorn.run('main:app', reload=True)
+
