@@ -1,18 +1,23 @@
-from sqlalchemy import desc
 from sqlalchemy.orm import Session
 
-from app import models, schemas
+
 from app.schemas.banner import BannerListSchema, BannerCreateSchema
 from app.models.banner import Banner
-from app.models.portfolio import PortfolioCategory
+from app.models.why_we_us import WhyWeUs
+
+from app.schemas.banner import BannerCreateSchema
+from app.models.banner import Banner
+from app.models.customer_feedback import Feedbacks
+
+# def get_banners(db: Session):
+#     return db.query(Banner).filter(Banner.id).first()
 
 
 def get_banners(db: Session):
-    return db.query(Banner).all()
-
+    return db.query(Banner).first()
 
 def get_why_we_us(db: Session):
-    return db.query(Why_we_us).order_by(desc(Why_we_us.id)).limit(3).all()
+    return db.query(WhyWeUs).order_by(desc(WhyWeUs.id)).limit(3).all()
 
 
 def create_banner(db: Session, banner_create: BannerCreateSchema):
@@ -23,23 +28,9 @@ def create_banner(db: Session, banner_create: BannerCreateSchema):
     return db_banner
 
 
-# def get_portfolio_categories(db: Session):
-#     return db.query(PortfolioCategory).all()
 
-def get_portfolio_categories(db: Session, skip: int = 0, limit: int = 100):
-    return db.query(models.PortfolioCategory).offset(skip).limit(limit).all()
-
-
-def get_portfolio_items(db: Session, skip: int = 0, limit: int = 100):
-    return db.query(models.PortfolioItem).offset(skip).limit(limit).all()
-
-
-def get_portfolio_items_by_category(db: Session, category_id: int):
-    return db.query(models.PortfolioItem).filter(models.PortfolioItem.category_id == category_id).all()
-
-
-def get_customer_feedbacks(db: Session, skip: int = 0, limit: int = 100):
-    return db.query(models.Feedbacks).offset(skip).limit(limit).all()
+def get_customer_feedbacks(db: Session):
+    return db.query(Feedbacks).all()
 
 
 

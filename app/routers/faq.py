@@ -15,7 +15,7 @@ router = APIRouter(
 
 
 @router.get("/", response_model=List[FaqListSchemas])
-def read_faqs(
+async def read_faqs(
     faq_type: Optional[str] = Query(None, description="FAQ turi bo'yicha filtr"),
     db: Session = Depends(get_db)
 ):
@@ -29,10 +29,3 @@ def read_faqs(
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Internal Server Error: {str(e)}")
 
-
-@router.post("/create_faq", response_model=FaqListSchemas)
-def create_new_faq(faq: FaqCreateSchemas, db: Session = Depends(get_db)):
-    try:
-        return create_faq(db, faq)
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Internal Server Error: {str(e)}")
