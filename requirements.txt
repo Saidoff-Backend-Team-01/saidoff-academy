@@ -6,13 +6,7 @@ python-decouple==3.8
 pydantic-settings==2.4.0
 SQLAlchemy==2.0.32
 fastapi-storages==0.3.0
-<<<<<<< HEAD
 uvicorn==0.30.6
-
-=======
-<<<<<<< HEAD
 pillow
-=======
 uvicorn==0.30.6
->>>>>>> 634d1187a51850019666e0e4f130ef69763c4d5f
->>>>>>> b7cf536090ec6417d1ae5880de44cb84a5d7b087
+Babel==2.16.0
