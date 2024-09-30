@@ -1,10 +1,12 @@
 import logging
+import os
 import pathlib
 import decouple
 from pydantic_settings import BaseSettings
 ROOT_DIR: pathlib.Path = pathlib.Path(__file__).parent.parent.parent.parent.parent.resolve()
 
-BASE_URL = decouple.config("BASE_URL")
+# BASE_URL = decouple.config("BASE_URL")
+BASE_URL = os.path.abspath(ROOT_DIR.as_posix())
 
 
 class BackendBaseSettings(BaseSettings):
