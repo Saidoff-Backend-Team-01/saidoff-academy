@@ -5,8 +5,8 @@ import decouple
 from pydantic_settings import BaseSettings
 ROOT_DIR: pathlib.Path = pathlib.Path(__file__).parent.parent.parent.parent.parent.resolve()
 
-# BASE_URL = decouple.config("BASE_URL")
-BASE_URL = os.path.abspath(ROOT_DIR.as_posix())
+
+BASE_URL = decouple.config("BASE_URL")
 
 
 class BackendBaseSettings(BaseSettings):
@@ -101,6 +101,5 @@ class BackendBaseSettings(BaseSettings):
             "openapi_prefix": self.OPENAPI_PREFIX,
             "api_prefix": self.API_PREFIX,
         }
-
 
 base_settings = BackendBaseSettings()

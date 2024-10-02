@@ -1,4 +1,4 @@
-from fastapi_storages import FileSystemStorage
+
 from sqlalchemy import Column, Integer, String, Text, Enum
 
 import enum

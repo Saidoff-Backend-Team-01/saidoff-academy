@@ -46,7 +46,7 @@ def upgrade() -> None:
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('position', sa.String(), nullable=True),
     sa.Column('name', sa.String(), nullable=False),
-    sa.Column(storage=FileSystemStorage(path="/tmp"), nullable=True),
+    sa.Column('image', ImageType(storage=FileSystemStorage(path="/tmp")), nullable=True),
     sa.Column('feedback_text', sa.String(length=20), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
@@ -88,13 +88,13 @@ def upgrade() -> None:
     )
     op.create_table('social_medias',
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
-    sa.Column(storage=FileSystemStorage(path="/tmp"), nullable=True),
+    sa.Column('image', ImageType(storage=FileSystemStorage(path="/tmp")), nullable=True),
     sa.Column('link', sa.String(), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('sponsors',
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
-    sa.Column(storage=FileSystemStorage(path="/tmp"), nullable=True),
+    sa.Column('image', ImageType(storage=FileSystemStorage(path="/tmp")), nullable=True),
     sa.Column('url', sa.String(), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
@@ -102,7 +102,7 @@ def upgrade() -> None:
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('title', sa.String(), nullable=False),
     sa.Column('desc', sa.String(), nullable=False),
-    sa.Column('bg_image', storage=FileSystemStorage(path="/tmp"), nullable=True),
+    sa.Column('bg_image', ImageType(storage=FileSystemStorage(path="/tmp")), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('contact_with_us',

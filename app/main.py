@@ -1,3 +1,4 @@
+import os
 from typing import List
 from fastapi import FastAPI
 from typing_extensions import Optional
@@ -5,7 +6,6 @@ import uvicorn
 from fastapi.staticfiles import StaticFiles
 
 from app.config.database import Base, SessionLocal, engine, get_db
-
 
 from fastapi import FastAPI, Request
 from babel import Locale
@@ -16,9 +16,7 @@ from sqlalchemy.orm import Session
 from . import models, crud
 from app.routers.translations import router as translations_router
 
-
 from app.routers.company import router as company_router
-from app.routers.services import router as service_router
 
 from app.routers.company import router as company_router
 
@@ -36,7 +34,6 @@ from app.admin import model_admins
 from app.admin.auth import authentication_backend
 from app.config.settings import base_settings
 
-
 sponsors_router
 app = FastAPI(
     prefix='/api/v1/'
@@ -44,7 +41,7 @@ app = FastAPI(
 
 admin = Admin(app, engine, authentication_backend=authentication_backend)
 
-translations = Translations.load('translations', locales=['en', 'es'])
+translations = Translations.load('translations', locales=['en', 'uz', 'ru'])
 
 admin.add_view(model_admins.BannerAdmin)
 # admin.add_view(model_admins.Why_we_us_Admin)
@@ -64,7 +61,8 @@ admin.add_view(model_admins.PortfolioTagAdmin)
 admin.add_view(model_admins.OurteamAdmin)
 admin.add_view(model_admins.ServicesAdmin)
 admin.add_view(model_admins.SponsorAdmin)
-
+admin.add_view(model_admins.ItemAdmin)
+admin.add_view(model_admins.ItemTranslationAdmin)
 
 app.include_router(company_router)
 app.include_router(our_team_router)
@@ -75,21 +73,25 @@ app.include_router(social_media_router)
 app.include_router(sponsors_router)
 app.include_router(contact_router)
 app.include_router(translations_router)
+app.include_router(why_we_us_router)
+app.include_router(portfolio_router)
+app.include_router(config_router)
 
 
+@app.middleware("http")
+async def set_language_locale(request: Request, call_next):
+    print(request)
+    lang = request.headers.get('Accept-Language', 'en')
+    if len(lang) > 2:
+        lang = 'en'
+    print("lang: ", lang)
+    locale = Locale.parse(lang, sep='-')
+    print(locale)
+    request.state.locale = locale
+    request.state.translations = translations
+    response = await call_next(request)
+    return response
 
-# app = FastAPI()
-#
-# @app.middleware("http")
-# async def set_language_locale(request: Request, call_next):
-#     lang = request.headers.get('Accept-Language', 'en')
-#     locale = Locale.parse(lang, sep='-')
-#
-#     request.state.locale = locale
-#     request.state.translations = translations
-#     response = await call_next(request)
-#     return response
-#
 
 # app.include_router(why_we_us_router)
 # app.include_router(portfolio_router)
@@ -99,4 +101,3 @@ app.mount("/media", StaticFiles(directory="media"), name="media")
 
 if __name__ == '__main__':
     uvicorn.run('main:app', reload=True)
-

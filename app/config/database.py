@@ -10,6 +10,7 @@ SQLALCHEMY_DATABASE_URL_TESTING = "postgresql://postgres:shahzod0604@localhost/S
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
 
+
 if os.environ.get('ENVIRONMENT') == "testing":
      engine = create_engine(
      SQLALCHEMY_DATABASE_URL_TESTING,
