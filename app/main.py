@@ -86,7 +86,7 @@ async def set_language_locale(request: Request, call_next):
         lang = 'en'
     print("lang: ", lang)
     locale = Locale.parse(lang, sep='-')
-    print(locale)
+
     request.state.locale = locale
     request.state.translations = translations
     response = await call_next(request)
