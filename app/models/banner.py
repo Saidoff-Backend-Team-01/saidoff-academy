@@ -1,3 +1,4 @@
+
 from sqlalchemy import Column, Integer, String, Text, Enum
 
 import enum
@@ -15,7 +16,5 @@ class Banner(Base):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     title = Column(String, nullable=False)
-    bg_image = Column(ImageType(storage=FileSystemStorage(path="app/media/banner")), nullable=True)
-    phone_num = Column(String(length=20), nullable=False)
     desc = Column(Text, nullable=False)
     page_type = Column(Enum(PageType), nullable=False)

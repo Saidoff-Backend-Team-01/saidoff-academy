@@ -2,7 +2,8 @@ from fastapi import APIRouter, Depends
 
 from app.crud.ourteam import get_ourteams
 
-from app.schemas.banner import BannerListSchema, BannerCreateSchema, PortfolioCategorySchema, PortfolioItemSchema, CustomerFeedbackSchema
+
+from app.schemas.banner import BannerListSchema, BannerCreateSchema
 from app.crud.banner import *
 from app.schemas.banner import BannerListSchema, BannerCreateSchema
 from app.schemas.custumer_feedback import CustomerFeedbackSchema
@@ -12,7 +13,7 @@ from sqlalchemy.orm import Session
 from typing import List
 from fastapi import FastAPI, Depends, HTTPException, Query
 
-from app.schemas.ourteam import OurteamCreateSchema
+
 
 
 router = APIRouter(

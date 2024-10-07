@@ -4,8 +4,12 @@ from sqlalchemy.orm import sessionmaker
 import os
 
 
-SQLALCHEMY_DATABASE_URL = "postgresql+psycopg2://saidadmin:123@localhost/saidb"
-SQLALCHEMY_DATABASE_URL_TESTING = "postgresql://postgres:shahzod0604@localhost/SaidoffGroup"
+SQLALCHEMY_DATABASE_URL = "postgresql+psycopg2://postgres:shahzod0604@localhost/SaidoffGroup"
+SQLALCHEMY_DATABASE_URL_TESTING = "postgresql://postgres:shahzod0604@localhost/SaidoffTest"
+
+
+engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
+
 
 if os.environ.get('ENVIRONMENT') == "testing":
      engine = create_engine(

@@ -1,8 +1,10 @@
 import logging
+import os
 import pathlib
 import decouple
 from pydantic_settings import BaseSettings
 ROOT_DIR: pathlib.Path = pathlib.Path(__file__).parent.parent.parent.parent.parent.resolve()
+
 
 BASE_URL = decouple.config("BASE_URL")
 
@@ -84,7 +86,7 @@ class BackendBaseSettings(BaseSettings):
         validate_assignment: bool = True
 
     @property
-    def set_backend_app_attributes(self) -> dict[str, str | bool]:
+    def set_backend_app_attributes(self) -> dict[str, bool]:
         """
         Set all `FastAPI` class' attributes with the custom values defined in `BackendBaseSettings`.
         """

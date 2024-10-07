@@ -19,6 +19,7 @@ from app.models.our_team import OurTeam
 from app.models.social_medias import SocialMedias
 from app.models.portfolio import PortfolioCategory, PortfolioItem, PortfolioTag
 from app.models.sponsors import Sponsors
+from app.models.translation import Item, ItemTranslation
 
 class BannerAdmin(ModelView, model=Banner):
     name = 'Banner'
@@ -156,3 +157,16 @@ class SponsorAdmin(ModelView, model=Sponsors):
     
     column_list = [Sponsors.id]
     form_columns = [Sponsors.url, Sponsors.image]
+
+
+class ItemAdmin(ModelView, model=Item):
+    column_list = [Item.id, Item.name, Item.description]
+    form_columns = [Item.name, Item.description]
+
+
+class ItemTranslationAdmin(ModelView, model=ItemTranslation):
+    column_list = [ItemTranslation.id, ItemTranslation.item_id, ItemTranslation.language_code,
+                   ItemTranslation.translated_name, ItemTranslation.translated_description]
+    form_columns = [ItemTranslation.item_id, ItemTranslation.language_code,
+                    ItemTranslation.translated_name, ItemTranslation.translated_description]
+

@@ -8,3 +8,4 @@ from .portfolio import PortfolioCategory, PortfolioItem
 from .social_medias import SocialMedias
 from .sponsors import Sponsors
 from .why_we_us import WhyWeUs
+from .translation import Base
